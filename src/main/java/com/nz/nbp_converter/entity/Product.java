@@ -1,6 +1,13 @@
-package com.nz.nbp_converter;
+package com.nz.nbp_converter.entity;
 
+import jakarta.persistence.*;
+
+@Table(name="products")
+@Entity
 public class Product {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
     private String name;
 
     private double usdPrice;

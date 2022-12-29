@@ -1,22 +1,21 @@
 package com.nz.nbp_converter;
 
+import com.nz.nbp_converter.entity.Product;
 import com.nz.nbp_converter.repository.ProductRepository;
 import com.nz.nbp_converter.service.ProductService;
-import org.springframework.boot.Banner;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import java.util.ArrayList;
-import java.util.List;
-
 @Controller
 public class ProductController {
 
     private ProductService productService;
-    public ProductController(){
-        productService = new ProductService(new ProductRepository());
+    @Autowired
+    public ProductController(ProductService productService){
+        this.productService =productService;
     }
     Converter converter = new Converter();
 

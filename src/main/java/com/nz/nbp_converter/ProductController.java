@@ -1,5 +1,7 @@
 package com.nz.nbp_converter;
 
+import com.nz.nbp_converter.repository.ProductRepository;
+import com.nz.nbp_converter.service.ProductService;
 import org.springframework.boot.Banner;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,10 +13,16 @@ import java.util.List;
 
 @Controller
 public class ProductController {
+
+    private ProductService productService;
+    public ProductController(){
+        productService = new ProductService(new ProductRepository());
+    }
     Converter converter = new Converter();
-    List<Product> products = new ArrayList<>();
+
     @GetMapping("/")
     public String getProducts(Model model){
+        var products = productService.getProducts();
         model.addAttribute("products",products);
         return "products";
     }
@@ -26,9 +34,9 @@ public class ProductController {
     @PostMapping("/submitProduct")
     public String submitProduct(Product product){
         var usdPrice = product.getUsdPrice();
-        var plnPrice = converter.convertUsdToPln(usdPrice);
+        var plnPrice = converter.convertUsdToPln(usdPrice) * usdPrice;
         product.setPlnPrice(plnPrice);
-        products.add(product);
+        productService.addProduct(product);
         return "redirect:/";
     }
 }

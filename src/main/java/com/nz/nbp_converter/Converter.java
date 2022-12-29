@@ -1,13 +1,12 @@
 package com.nz.nbp_converter;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
-
 public class Converter {
     public double convertUsdToPln(double usd){
         RestTemplate restTemplate = new RestTemplate();
@@ -15,16 +14,14 @@ public class Converter {
         ResponseEntity<String> response = restTemplate.getForEntity(url,String.class);
 
         if(response.getStatusCode()== HttpStatus.OK){
-            ObjectMapper mapper = new ObjectMapper();
+            String jsonText = response.getBody();
             try {
-                JsonNode root = mapper.readTree(response.getBody());
-                JsonNode rates = root;
-                System.out.println(rates);
-
-            } catch (JsonProcessingException e) {
+                JSONObject obj=new JSONObject(jsonText);
+                double bid = obj.getJSONArray("rates").getJSONObject(0).getDouble("ask");
+                System.out.println(bid);
+            } catch (JSONException e) {
                 throw new RuntimeException(e);
             }
-
         }
         return 0;
     }

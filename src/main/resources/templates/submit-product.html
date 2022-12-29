@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <form method="post" th:object="${product}" th:action="@{/submitProduct}">
+        <input type="text" placeholder="name" th:field="*{name}"/>
+        <br/>
+        <input type="text" placeholder="usd" th:field="*{usdPrice}"/>
+        <br/>
+        <input type="submit" value="Submit">
+    </form>
+
+</body>
+</html>

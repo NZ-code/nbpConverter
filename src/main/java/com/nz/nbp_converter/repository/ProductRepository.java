@@ -13,9 +13,9 @@ import java.util.Optional;
 
 @Repository
 public interface ProductRepository extends JpaRepository<Product,Integer> {
-    @Query("select p from Product p where p.name LIKE CONCAT('%',:name,'%')")
+    @Query("select p from Product p where LOWER(p.name) LIKE CONCAT('%',LOWER(:name),'%')")
     public List<Product> findAllByLikeName(@Param("name") String name);
-    @Query("select p from Product p where p.name LIKE CONCAT('%',:name,'%') and p.date = :date" )
+    @Query("select p from Product p where LOWER(p.name) LIKE CONCAT('%',LOWER(:name),'%') and p.date = :date" )
     List<Product> findAllByLikeNameAndDate(@Param("name") String name, @Param("date")Date date);
     @Query("select p from Product p where p.date = :date" )
     List<Product> findAllByDate( @Param("date")Date date);

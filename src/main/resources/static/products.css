@@ -1,0 +1,56 @@
+/* Set the font, color, and background for the form inputs */
+input[type="text"], input[type="date"] {
+  font-family: Arial, sans-serif;
+  color: #333;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  padding: 10px;
+}
+
+/* Add some hover effects for the form inputs */
+input[type="text"]:hover, input[type="date"]:hover {
+  border-color: #999;
+}
+
+input[type="text"]:focus, input[type="date"]:focus {
+  border-color: #666;
+  outline: 0;
+}
+input[type="submit"] {
+  background-color: #4CAF50; /* Green background */
+  border: none; /* Remove border */
+  color: white; /* White text */
+  padding: 15px 32px; /* Some padding */
+  text-align: center; /* Center the text */
+  text-decoration: none; /* Remove underline from links */
+  display: inline-block; /* Make the buttons appear next to each other */
+  font-size: 16px; /* Increase font size */
+  margin: 4px 2px; /* Add some margin */
+  cursor: pointer; /* Add a pointer cursor on hover */
+}
+
+/* Add a hover effect for the buttons */
+input[type="submit"]:hover {
+  background-color: #45a049;
+}
+
+table {
+  width: 100%; /* Takes up the full width of the page */
+  border-collapse: collapse; /* Removes the space between cells */
+  border: 1px solid #ccc; /* Adds a border to the table */
+  margin: 20px 0; /* Adds some space above and below the table */
+}
+
+th, td {
+  text-align: left; /* Aligns the cell contents to the left */
+  padding: 12px; /* Adds some padding to the cells */
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2; /* Adds a light gray background color to every even row */
+}
+
+th {
+  background-color: #4CAF50; /* Adds a green background color to the table header */
+  color: white; /* Makes the text white */
+}

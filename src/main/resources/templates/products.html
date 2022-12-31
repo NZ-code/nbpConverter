@@ -2,7 +2,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Products</title>
-    <style src="static/product.css"></style>
+    <link rel="stylesheet" th:href="products.css">
 </head>
 <body>
     <nav>
@@ -19,11 +19,13 @@
     <table>
         <tr>
             <th>Name</th>
+            <th>Date</th>
             <th>USD</th>
             <th>PLN</th>
         </tr>
         <tr th:each="product : ${products}">
             <td th:text="*{product.name}"></td>
+            <td th:text="*{product.date}"></td>
             <td th:text="*{product.usdPrice}"></td>
             <td th:text="*{product.plnPrice}"></td>
         </tr>

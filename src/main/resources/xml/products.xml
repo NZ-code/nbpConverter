@@ -22,4 +22,14 @@
   <koszt_USD>32.0</koszt_USD>
   <koszt_PLN>120.56</koszt_PLN>
   <data_ksiegowania>2022-12-08</data_ksiegowania>
+</komputer><komputer>
+  <nazwa>Nick</nazwa>
+  <koszt_USD>23.0</koszt_USD>
+  <koszt_PLN>86.6525</koszt_PLN>
+  <data_ksiegowania>2022-12-01</data_ksiegowania>
+</komputer><komputer>
+  <nazwa>Nick</nazwa>
+  <koszt_USD>32.0</koszt_USD>
+  <koszt_PLN>120.56</koszt_PLN>
+  <data_ksiegowania>2022-12-08</data_ksiegowania>
 </komputer></faktura>

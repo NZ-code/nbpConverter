@@ -1,18 +1,23 @@
 package com.nz.nbp_converter.entity;
 
+import com.thoughtworks.xstream.annotations.XStreamAlias;
+import com.thoughtworks.xstream.annotations.XStreamOmitField;
 import jakarta.persistence.*;
 
 import java.sql.Date;
 
 
 @Table(name="products")
+@XStreamAlias("komputer")
 @Entity
 public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @XStreamOmitField
     private int id;
+    @XStreamAlias("nazwa")
     private String name;
-
+    @XStreamAlias("koszt_USD")
     private double usdPrice;
 
     public Product(String name, double usdPrice, double plnPrice, Date date) {
@@ -22,7 +27,7 @@ public class Product {
         this.plnPrice = plnPrice;
         this.date = date;
     }
-
+    @XStreamAlias("koszt_PLN")
     private double plnPrice;
 
     public int getId() {
@@ -41,6 +46,7 @@ public class Product {
         this.date = date;
     }
 
+    @XStreamAlias("data_ksiegowania")
     private Date date;
     public Product(String name,  double usdPrice, double plnPrice) {
         this.name = name;

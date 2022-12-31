@@ -28,7 +28,7 @@ public class Converter {
             try {
                 JSONObject obj=new JSONObject(jsonText);
                 ask = obj.getJSONArray("rates").getJSONObject(0).getDouble("ask");
-                System.out.println(ask);
+
                 return ask;
             } catch (JSONException e) {
                 throw new RuntimeException(e);

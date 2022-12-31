@@ -6,6 +6,7 @@ import com.nz.nbp_converter.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.sql.Date;
 import java.util.List;
 
 @Service
@@ -27,5 +28,11 @@ public class ProductService {
     public List<Product> getProductsByName(String name){
         return productRepository.findAllByLikeName(name);
     }
+    public List<Product> getProductsByNameAndDate(String name, Date date){
+        return productRepository.findAllByLikeNameAndDate(name,date);
+    }
 
+    public List<Product> getProductsByDate(Date date) {
+        return productRepository.findAllByDate(date);
+    }
 }

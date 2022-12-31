@@ -10,7 +10,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.sql.Date;
 import java.util.ArrayList;
+
 import java.util.List;
 
 @Controller
@@ -27,12 +29,30 @@ public class ProductController {
     public String getProducts(Model model){
         var products = productService.getProducts();
         model.addAttribute("products",products);
+        System.out.println(products);
         return "products";
     }
     @GetMapping("/find")
-    public String search(@RequestParam(value="name",required = false) String name,Model model)
+    public String search(@RequestParam(value="name",required = false) String nameParam,
+                         @RequestParam(value="date",required = false) String dateParam,
+                         Model model)
     {
-        List<Product> products = productService.getProductsByName(name);
+        List<Product> products = new ArrayList<Product>();
+        if(nameParam != ""){
+            if(dateParam != ""){
+                Date date = Date.valueOf(dateParam);
+                products = productService.getProductsByNameAndDate(nameParam,date);
+            }
+            else{
+                products = productService.getProductsByName(nameParam);
+            }
+        } else if (dateParam != "") {
+            Date date = Date.valueOf(dateParam);
+            products = productService.getProductsByDate(date);
+        }
+        else{
+            products = productService.getProducts();
+        }
         model.addAttribute("products",products);
         return "products";
     }

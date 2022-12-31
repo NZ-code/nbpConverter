@@ -25,7 +25,7 @@ import java.io.File;
 import java.io.IOException;
 
 public final class XMLProductRepository {
-    private String path = "src/main/resources/static/products.xml";
+    private String path = "src/main/resources/xml/products.xml";
     private static volatile XMLProductRepository instance;
     private XStream xstream;
 

@@ -2,12 +2,13 @@
 <head>
     <meta charset="UTF-8">
     <title>Products</title>
-
+    <style src="static/product.css"></style>
 </head>
 <body>
     <nav>
         <a th:href="@{/}">Main</a>
         <a th:href="@{/submit}">Submit</a>
+        <a th:href="@{/xml}">XML</a>
     </nav>
     <form  th:action="@{/find}">
         <input type="text" placeholder="name" th:name ="name"/>

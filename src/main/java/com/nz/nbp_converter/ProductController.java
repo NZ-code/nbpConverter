@@ -3,13 +3,20 @@ package com.nz.nbp_converter;
 import com.nz.nbp_converter.entity.Product;
 import com.nz.nbp_converter.repository.ProductRepository;
 import com.nz.nbp_converter.service.ProductService;
+import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.io.File;
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.sql.Date;
 import java.util.ArrayList;
 
@@ -60,6 +67,18 @@ public class ProductController {
     public String getSubmitPage(Model model){
         model.addAttribute("product",new Product());
         return "submit-product";
+    }
+    @GetMapping("/xml")
+    @ResponseBody
+    public String getProductsXml(HttpServletResponse response){
+        String path = "src/main/resources/xml/products.xml";
+        try {
+            String text = new String(Files.readAllBytes(Paths.get(path)), StandardCharsets.UTF_8);
+            response.setContentType("application/xml");
+            return text;
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
     @PostMapping("/submitProduct")
     public String submitProduct(Product product){

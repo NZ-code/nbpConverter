@@ -1,12 +1,3 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?><faktura>
-<komputer>
-  <nazwa>Lenovo</nazwa>
-  <koszt_USD>2033.0</koszt_USD>
-  <koszt_PLN>7659.3275</koszt_PLN>
-  <data_ksiegowania>2022-12-29</data_ksiegowania>
-</komputer><komputer>
-  <nazwa>Laptop</nazwa>
-  <koszt_USD>77.0</koszt_USD>
-  <koszt_PLN>290.0975</koszt_PLN>
-  <data_ksiegowania>2022-11-30</data_ksiegowania>
-</komputer></faktura>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<faktura>
+</faktura>

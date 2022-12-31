@@ -12,12 +12,12 @@ public class Converter {
     }
 
     private final String BASE = "http://api.nbp.pl/api/";
-    // TODO SET PROPER DATE
-    private String date = "2016-04-04";
+
+    private String date = "2022-12-29";
     private String currency = "usd";
-    public double convertUsdToPln(double usd){
+    public double convertUsdToPln(double usdPrice){
         RestTemplate restTemplate = new RestTemplate();
-        //TODO ASK OR BID?
+
         double ask = 0;
 
         String url = BASE+"exchangerates/rates/c/"+currency+"/"+date+"/?format=json";
@@ -29,7 +29,7 @@ public class Converter {
                 JSONObject obj=new JSONObject(jsonText);
                 ask = obj.getJSONArray("rates").getJSONObject(0).getDouble("ask");
 
-                return ask;
+                return ask  * usdPrice;
             } catch (JSONException e) {
                 throw new RuntimeException(e);
             }

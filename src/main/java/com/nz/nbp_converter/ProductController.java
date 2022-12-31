@@ -86,7 +86,7 @@ public class ProductController {
     @PostMapping("/submitProduct")
     public String submitProduct(Product product){
         var usdPrice = product.getUsdPrice();
-        var plnPrice = converter.convertUsdToPln(usdPrice) * usdPrice;
+        var plnPrice = converter.convertUsdToPln(usdPrice);
         product.setPlnPrice(plnPrice);
         productService.addProduct(product);
         return "redirect:/";

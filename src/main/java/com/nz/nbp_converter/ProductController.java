@@ -5,6 +5,7 @@ import com.nz.nbp_converter.repository.ProductRepository;
 import com.nz.nbp_converter.service.ProductService;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -24,7 +25,8 @@ import java.util.List;
 
 @Controller
 public class ProductController {
-
+    @Value("${products.path}")
+    String path;
     private ProductService productService;
     @Autowired
     public ProductController(ProductService productService){
@@ -71,8 +73,9 @@ public class ProductController {
     @GetMapping("/xml")
     @ResponseBody
     public String getProductsXml(HttpServletResponse response){
-        String path = "src/main/resources/xml/products.xml";
+
         try {
+
             String text = new String(Files.readAllBytes(Paths.get(path)), StandardCharsets.UTF_8);
             response.setContentType("application/xml");
             return text;

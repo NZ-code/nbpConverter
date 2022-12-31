@@ -7,6 +7,7 @@ import com.thoughtworks.xstream.io.naming.NoNameCoder;
 import com.thoughtworks.xstream.io.xml.DomDriver;
 import com.thoughtworks.xstream.io.xml.StaxDriver;
 import com.thoughtworks.xstream.io.xml.XmlFriendlyNameCoder;
+import org.springframework.beans.factory.annotation.Value;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -25,6 +26,7 @@ import java.io.File;
 import java.io.IOException;
 
 public final class XMLProductRepository {
+    @Value("${products.path}")
     private String path = "src/main/resources/xml/products.xml";
     private static volatile XMLProductRepository instance;
     private XStream xstream;

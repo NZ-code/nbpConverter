@@ -10,7 +10,7 @@ NBPConverter (http://46.41.141.104/)
 ## Install and Run
 1. Create xml file "products.xml" at nbp_converter\src\main\resources\xml\products.xml
 ```
-<xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <faktura>
 </faktura>
 ```

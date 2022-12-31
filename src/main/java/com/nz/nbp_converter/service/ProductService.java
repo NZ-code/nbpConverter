@@ -17,9 +17,15 @@ public class ProductService {
         this.productRepository = productRepository;
     }
     public List<Product> getProducts(){
+
         return productRepository.findAll();
     }
     public void addProduct(Product product){
+
         productRepository.save(product);
     }
+    public List<Product> getProductsByName(String name){
+        return productRepository.findAllByLikeName(name);
+    }
+
 }

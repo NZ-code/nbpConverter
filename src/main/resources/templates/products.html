@@ -5,6 +5,15 @@
 
 </head>
 <body>
+    <nav>
+        <a th:href="@{/}">Main</a>
+        <a th:href="@{/submit}">Submit</a>
+    </nav>
+    <form  th:action="@{/find}">
+        <input type="text" placeholder="name" th:name ="name"/>
+        <input type="submit" value="FIND"/>
+    </form>
+
     <table>
         <tr>
             <th>Name</th>

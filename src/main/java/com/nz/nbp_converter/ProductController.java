@@ -8,6 +8,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Controller
 public class ProductController {
@@ -25,6 +29,13 @@ public class ProductController {
         model.addAttribute("products",products);
         return "products";
     }
+    @GetMapping("/find")
+    public String search(@RequestParam(value="name",required = false) String name,Model model)
+    {
+        List<Product> products = productService.getProductsByName(name);
+        model.addAttribute("products",products);
+        return "products";
+    }
     @GetMapping("/submit")
     public String getSubmitPage(Model model){
         model.addAttribute("product",new Product());
@@ -38,4 +49,7 @@ public class ProductController {
         productService.addProduct(product);
         return "redirect:/";
     }
+
+
+
 }

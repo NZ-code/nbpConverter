@@ -8,6 +8,10 @@
     <title>Document</title>
 </head>
 <body>
+    <nav>
+        <a th:href="@{/}">Main</a>
+        <a th:href="@{/submit}">Submit</a>
+    </nav>
     <form method="post" th:object="${product}" th:action="@{/submitProduct}">
         <input type="text" placeholder="name" th:field="*{name}"/>
         <br/>

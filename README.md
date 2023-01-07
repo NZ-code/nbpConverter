@@ -1,11 +1,8 @@
 # NBPConverter
-
+website(http://46.41.141.104/)
 ## Description
+NBPConverter is an web application that convert price from  USD to PLN based on the NPB API(http://api.nbp.pl) for a given day, save it to an XML file and a database, and then display the data from the saved database in the appropriate format.
 
-NBPConverter is an application that convert price from  USD to PLN based on the NPB API(http://api.nbp.pl) for a given day, save it to an XML file and a database, and then display the data from the saved database in the appropriate format.
-
-## WEBSITE
-NBPConverter (http://46.41.141.104/)
 
 ## Install and Run
 1. Create xml file "products.xml" at nbp_converter\src\main\resources\xml\products.xml

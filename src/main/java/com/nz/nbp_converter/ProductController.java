@@ -4,10 +4,12 @@ import com.nz.nbp_converter.entity.Product;
 import com.nz.nbp_converter.repository.ProductRepository;
 import com.nz.nbp_converter.service.ProductService;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -84,7 +86,8 @@ public class ProductController {
         }
     }
     @PostMapping("/submitProduct")
-    public String submitProduct(Product product){
+    public String submitProduct(@Valid Product product, BindingResult bindingResult){
+        if(bindingResult.hasErrors()) return "submit-product";
         var usdPrice = product.getUsdPrice();
         var plnPrice = converter.convertUsdToPln(usdPrice);
         product.setPlnPrice(plnPrice);

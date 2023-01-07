@@ -3,6 +3,10 @@ package com.nz.nbp_converter.entity;
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.thoughtworks.xstream.annotations.XStreamOmitField;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Past;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.sql.Date;
 
@@ -15,11 +19,18 @@ public class Product {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @XStreamOmitField
     private int id;
+    @NotBlank(message = "Name cannot be blank")
     @XStreamAlias("nazwa")
     private String name;
+    @Min(value = 0,message = "Price must be higher than 0")
     @XStreamAlias("koszt_USD")
     private double usdPrice;
+    @XStreamAlias("koszt_PLN")
+    private double plnPrice;
 
+    @Past(message = "Date must be on the past")
+    @XStreamAlias("data_ksiegowania")
+    private Date date;
     public Product(String name, double usdPrice, double plnPrice, Date date) {
 
         this.name = name;
@@ -27,8 +38,6 @@ public class Product {
         this.plnPrice = plnPrice;
         this.date = date;
     }
-    @XStreamAlias("koszt_PLN")
-    private double plnPrice;
 
     public int getId() {
         return id;
@@ -46,8 +55,7 @@ public class Product {
         this.date = date;
     }
 
-    @XStreamAlias("data_ksiegowania")
-    private Date date;
+
     public Product(String name,  double usdPrice, double plnPrice) {
         this.name = name;
         this.usdPrice = usdPrice;

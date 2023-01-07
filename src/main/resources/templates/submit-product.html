@@ -15,10 +15,13 @@
         <a th:href="@{/xml}">XML</a>
     </nav>
     <form method="post" th:object="${product}" th:action="@{/submitProduct}">
+        <p style= "color:red" th:errors="*{name}"></p>
         <input type="text" placeholder="name" th:field="*{name}"/>
         <br/>
+        <p style= "color:red" th:errors="*{usdPrice}"></p>
         <input type="text" placeholder="usd" th:field="*{usdPrice}"/>
         <br/>
+        <p style= "color:red" th:errors="*{date}"></p>
         <input type="date" th:field="*{date}"}>
         <input type="submit" value="Submit">
     </form>
